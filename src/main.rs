@@ -1,5 +1,4 @@
 use bevy::prelude::*;
-use bevy_inspector_egui::quick::WorldInspectorPlugin;
 use space_editor::prelude::*;
 
 mod level;
@@ -12,14 +11,15 @@ fn init_editor(app: &mut App) {
 
 #[cfg(not(feature = "editor"))]
 fn init_game(app: &mut App) {
-    app.add_plugins(WorldInspectorPlugin::new())
+    app.add_plugins(bevy_inspector_egui::quick::WorldInspectorPlugin::new())
+        .add_plugins(PrefabPlugin)
         .add_systems(Startup, level::load_level);
 }
 
 fn main() {
     let mut app = App::new();
 
-    app.add_plugins(DefaultPlugins).add_plugins(PrefabPlugin);
+    app.add_plugins(DefaultPlugins);
 
     #[cfg(feature = "editor")]
     init_editor(&mut app);

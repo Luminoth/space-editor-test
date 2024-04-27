@@ -1,3 +1,5 @@
+#![cfg(not(feature = "editor"))]
+
 use bevy::prelude::*;
 use space_editor::prelude::*;
 
