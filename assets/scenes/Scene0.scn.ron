@@ -7,7 +7,7 @@
           translation: (
             x: 0.0,
             y: 0.0,
-            z: 5.0,
+            z: 0.0,
           ),
           rotation: (
             x: 0.0,
@@ -16,13 +16,122 @@
             w: 1.0,
           ),
           scale: (
+            x: 200.0,
+            y: 0.1,
+            z: 200.0,
+          ),
+        ),
+        "bevy_core::name::Name": (
+          hash: 6691783761788891631,
+          name: "ground",
+        ),
+        "bevy_render::view::visibility::Visibility": Inherited,
+        "space_prefab::component::material::MaterialPrefab": (
+          base_color: Rgba(
+            red: 0.5803922,
+            green: 0.34509805,
+            blue: 0.101960786,
+            alpha: 1.0,
+          ),
+          base_color_texture: "",
+          emissive: Rgba(
+            red: 0.0,
+            green: 0.0,
+            blue: 0.0,
+            alpha: 1.0,
+          ),
+          emissive_texture: "",
+          perceptual_roughness: 0.5,
+          metallic: 0.0,
+          metallic_roughness_texture: "",
+          reflectance: 0.5,
+          normal_map_texture: "",
+          flip_normal_map_y: false,
+          occlusion_texture: "",
+          double_sided: false,
+          unlit: false,
+          fog_enabled: true,
+          alpha_mode: Opaque,
+          depth_bias: 0.0,
+          depth_map: "",
+          parallax_depth_scale: 0.1,
+          parallax_mapping_method: Occlusion,
+          max_parallax_layer_count: 16.0,
+        ),
+        "space_prefab::component::shape::MeshPrimitive3dPrefab": Box((
+          w: 1.0,
+          h: 1.0,
+          d: 1.0,
+        )),
+        "bevy_rapier3d::dynamics::rigid_body::RigidBody": Fixed,
+      },
+    ),
+    4294967305: (
+      components: {
+        "bevy_transform::components::transform::Transform": (
+          translation: (
+            x: 0.0,
+            y: 10.0,
+            z: 0.0,
+          ),
+          rotation: (
+            x: -0.4871745,
+            y: 0.0,
+            z: 0.0,
+            w: 0.87330467,
+          ),
+          scale: (
             x: 1.0,
             y: 1.0,
             z: 1.0,
           ),
         ),
         "bevy_core::name::Name": (
-          hash: 14586054308548018075,
+          hash: 13681017860503123396,
+          name: "Directional light",
+        ),
+        "bevy_render::view::visibility::Visibility": Inherited,
+        "space_shared::LightAreaToggle": (false),
+        "bevy_pbr::light::DirectionalLight": (
+          color: Rgba(
+            red: 1.0,
+            green: 1.0,
+            blue: 1.0,
+            alpha: 1.0,
+          ),
+          illuminance: 10000.0,
+          shadows_enabled: false,
+          shadow_depth_bias: 0.02,
+          shadow_normal_bias: 1.8,
+        ),
+        "space_prefab::component::camera::PlaymodeLight": (),
+        "space_prefab::save::ChildrenPrefab": ([
+          17179869196,
+        ]),
+      },
+    ),
+    4294967306: (
+      components: {
+        "bevy_transform::components::transform::Transform": (
+          translation: (
+            x: 0.0,
+            y: 5.0,
+            z: 10.0,
+          ),
+          rotation: (
+            x: -0.24740396,
+            y: 0.0,
+            z: 0.0,
+            w: 0.9689124,
+          ),
+          scale: (
+            x: 1.0,
+            y: 1.0,
+            z: 1.0,
+          ),
+        ),
+        "bevy_core::name::Name": (
+          hash: 2475331938349286022,
           name: "Camera3d",
         ),
         "bevy_render::view::visibility::Visibility": Inherited,
@@ -48,7 +157,7 @@
         )),
         "space_prefab::component::camera::PlaymodeCamera": (),
         "space_prefab::save::ChildrenPrefab": ([
-          4294967305,
+          4294967310,
         ]),
       },
     ),
@@ -57,14 +166,14 @@
         "bevy_transform::components::transform::Transform": (
           translation: (
             x: 0.0,
-            y: 10.0,
+            y: 5.0,
             z: 0.0,
           ),
           rotation: (
-            x: 0.4871745,
+            x: 0.0,
             y: 0.0,
             z: 0.0,
-            w: -0.87330467,
+            w: 1.0,
           ),
           scale: (
             x: 1.0,
@@ -73,27 +182,50 @@
           ),
         ),
         "bevy_core::name::Name": (
-          hash: 10817676243016737065,
-          name: "Directional light",
+          hash: 4700754756321061048,
+          name: "Dynamic Sphere",
         ),
         "bevy_render::view::visibility::Visibility": Inherited,
-        "space_shared::LightAreaToggle": (false),
-        "bevy_pbr::light::DirectionalLight": (
-          color: Rgba(
+        "space_prefab::component::material::MaterialPrefab": (
+          base_color: Rgba(
             red: 1.0,
             green: 1.0,
             blue: 1.0,
             alpha: 1.0,
           ),
-          illuminance: 10000.0,
-          shadows_enabled: false,
-          shadow_depth_bias: 0.02,
-          shadow_normal_bias: 1.8,
+          base_color_texture: "",
+          emissive: Rgba(
+            red: 0.0,
+            green: 0.0,
+            blue: 0.0,
+            alpha: 1.0,
+          ),
+          emissive_texture: "",
+          perceptual_roughness: 0.5,
+          metallic: 0.0,
+          metallic_roughness_texture: "",
+          reflectance: 0.5,
+          normal_map_texture: "",
+          flip_normal_map_y: false,
+          occlusion_texture: "",
+          double_sided: false,
+          unlit: false,
+          fog_enabled: true,
+          alpha_mode: Opaque,
+          depth_bias: 0.0,
+          depth_map: "",
+          parallax_depth_scale: 0.1,
+          parallax_mapping_method: Occlusion,
+          max_parallax_layer_count: 16.0,
         ),
-        "space_prefab::component::camera::PlaymodeLight": (),
-        "space_prefab::save::ChildrenPrefab": ([
-          4294967308,
-        ]),
+        "space_prefab::component::shape::MeshPrimitive3dPrefab": Sphere((
+          r: 1.0,
+        )),
+        "bevy_rapier3d::geometry::collider::Restitution": (
+          coefficient: 0.7,
+          combine_rule: Average,
+        ),
+        "bevy_rapier3d::dynamics::rigid_body::RigidBody": Dynamic,
       },
     ),
   },

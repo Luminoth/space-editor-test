@@ -1,31 +1,39 @@
 use bevy::prelude::*;
+use bevy_rapier3d::prelude::*;
 use space_editor::prelude::*;
 
+mod editor;
 mod scene;
-
-#[cfg(feature = "editor")]
-fn init_editor(app: &mut App) {
-    app.add_plugins(SpaceEditorPlugin)
-        .add_systems(Startup, simple_editor_setup);
-}
 
 #[cfg(not(feature = "editor"))]
 fn init_game(app: &mut App) {
     app.add_plugins(bevy_inspector_egui::quick::WorldInspectorPlugin::new())
-        .add_plugins(PrefabPlugin)
-        .add_systems(Startup, scene::load_scene);
+        .add_plugins(space_editor::space_prefab::plugins::PrefabPlugin)
+        .add_systems(Startup, scene::load_level);
 }
 
 fn main() {
     let mut app = App::new();
 
-    app.add_plugins(DefaultPlugins);
+    app.add_plugins(DefaultPlugins.set(WindowPlugin {
+        primary_window: Some(Window {
+            title: "Space Editor Test".into(),
+            ..default()
+        }),
+        ..default()
+    }))
+    .add_plugins(RapierPhysicsPlugin::<NoUserData>::default())
+    .add_plugins(RapierDebugRenderPlugin::default());
 
     #[cfg(feature = "editor")]
-    init_editor(&mut app);
+    editor::init(&mut app);
 
     #[cfg(not(feature = "editor"))]
     init_game(&mut app);
+
+    app.editor_registry::<RigidBody>()
+        //.editor_registry::<Collider>()
+        .editor_registry::<Restitution>();
 
     app.run();
 }
