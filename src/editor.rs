@@ -1,12 +1,20 @@
-#![cfg(feature = "editor")]
-
 use bevy::prelude::*;
 use bevy_rapier3d::prelude::*;
-use space_editor::prelude::*;
 
-pub fn init(app: &mut App) {
+fn register_types(app: &mut App) {
+    app.register_type::<CoefficientCombineRule>();
+}
+
+#[cfg(feature = "editor")]
+fn init_editor(app: &mut App) {
+    use space_editor::prelude::*;
+
     app.add_plugins(SpaceEditorPlugin)
         .add_systems(Startup, simple_editor_setup);
+
+    app.editor_registry::<RigidBody>()
+        //.editor_registry::<Collider>()
+        .editor_registry::<Restitution>();
 
     // TODO: we need to disable physics when not running
 
@@ -35,4 +43,11 @@ pub fn init(app: &mut App) {
             Visibility::default(),
         ),
     );
+}
+
+pub fn init(app: &mut App) {
+    register_types(app);
+
+    #[cfg(feature = "editor")]
+    init_editor(app);
 }

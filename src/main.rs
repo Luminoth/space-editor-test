@@ -1,6 +1,5 @@
 use bevy::prelude::*;
 use bevy_rapier3d::prelude::*;
-use space_editor::prelude::*;
 
 mod editor;
 mod scene;
@@ -25,15 +24,10 @@ fn main() {
     .add_plugins(RapierPhysicsPlugin::<NoUserData>::default())
     .add_plugins(RapierDebugRenderPlugin::default());
 
-    #[cfg(feature = "editor")]
     editor::init(&mut app);
 
     #[cfg(not(feature = "editor"))]
     init_game(&mut app);
-
-    app.editor_registry::<RigidBody>()
-        //.editor_registry::<Collider>()
-        .editor_registry::<Restitution>();
 
     app.run();
 }

@@ -3,7 +3,6 @@
 use bevy::prelude::*;
 use space_editor::prelude::*;
 
-#[allow(dead_code)]
 pub fn load_level(mut commands: Commands) {
     info!("loading level ...");
 

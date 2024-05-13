@@ -221,11 +221,11 @@
         "space_prefab::component::shape::MeshPrimitive3dPrefab": Sphere((
           r: 1.0,
         )),
+        "bevy_rapier3d::dynamics::rigid_body::RigidBody": Dynamic,
         "bevy_rapier3d::geometry::collider::Restitution": (
           coefficient: 0.7,
           combine_rule: Average,
         ),
-        "bevy_rapier3d::dynamics::rigid_body::RigidBody": Dynamic,
       },
     ),
   },
