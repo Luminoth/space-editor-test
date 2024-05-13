@@ -1,16 +1,18 @@
 use bevy::prelude::*;
-use bevy_rapier3d::prelude::*;
 
-fn register_types(app: &mut App) {
-    app.register_type::<CoefficientCombineRule>();
+fn register_types(#[allow(unused_variables)] app: &mut App) {
+    #[cfg(feature = "rapier")]
+    {
+        use bevy_rapier3d::prelude::*;
+        app.register_type::<CoefficientCombineRule>();
+    }
 }
 
 #[cfg(feature = "editor")]
-fn init_editor(app: &mut App) {
+#[cfg(feature = "rapier")]
+fn init_rapier(app: &mut App) {
+    use bevy_rapier3d::prelude::*;
     use space_editor::prelude::*;
-
-    app.add_plugins(SpaceEditorPlugin)
-        .add_systems(Startup, simple_editor_setup);
 
     app.editor_registry::<RigidBody>()
         //.editor_registry::<Collider>()
@@ -43,6 +45,17 @@ fn init_editor(app: &mut App) {
             Visibility::default(),
         ),
     );
+}
+
+#[cfg(feature = "editor")]
+fn init_editor(app: &mut App) {
+    use space_editor::prelude::*;
+
+    app.add_plugins(SpaceEditorPlugin)
+        .add_systems(Startup, simple_editor_setup);
+
+    #[cfg(feature = "rapier")]
+    init_rapier(app);
 }
 
 pub fn init(app: &mut App) {

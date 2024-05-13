@@ -1,5 +1,4 @@
 use bevy::prelude::*;
-use bevy_rapier3d::prelude::*;
 
 mod editor;
 mod scene;
@@ -20,9 +19,14 @@ fn main() {
             ..default()
         }),
         ..default()
-    }))
-    .add_plugins(RapierPhysicsPlugin::<NoUserData>::default())
-    .add_plugins(RapierDebugRenderPlugin::default());
+    }));
+
+    #[cfg(feature = "rapier")]
+    {
+        use bevy_rapier3d::prelude::*;
+        app.add_plugins(RapierPhysicsPlugin::<NoUserData>::default())
+            .add_plugins(RapierDebugRenderPlugin::default());
+    }
 
     editor::init(&mut app);
 
