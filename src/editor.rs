@@ -38,7 +38,7 @@ fn init_editor(app: &mut App) {
             MeshPrimitive3dPrefab::Sphere(SpherePrefab::default()),
             Name::new("Dynamic Sphere".to_string()),
             RigidBody::Dynamic,
-            Collider::ball(0.5),
+            Collider::ball(1.0),
             Transform::default(),
             Visibility::default(),
         ),
