@@ -19,7 +19,7 @@ bevy-inspector-egui = { git = "https://github.com/naomijub/bevy-inspector-egui.g
 
 [features]
 default = [
-    "editor",
+    #"editor",
     #"rapier",
 ]
 editor = []

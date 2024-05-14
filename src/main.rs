@@ -8,6 +8,13 @@ fn init_game(app: &mut App) {
     app.add_plugins(bevy_inspector_egui::quick::WorldInspectorPlugin::new())
         .add_plugins(space_editor::space_prefab::plugins::PrefabPlugin)
         .add_systems(Startup, scene::load_level);
+
+    #[cfg(not(feature = "rapier"))]
+    {
+        use space_editor::prelude::bevy_xpbd_3d::prelude::*;
+
+        app.add_plugins(PhysicsPlugins::default());
+    }
 }
 
 fn main() {
@@ -24,6 +31,7 @@ fn main() {
     #[cfg(feature = "rapier")]
     {
         use bevy_rapier3d::prelude::*;
+
         app.add_plugins(RapierPhysicsPlugin::<NoUserData>::default())
             .add_plugins(RapierDebugRenderPlugin::default());
     }

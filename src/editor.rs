@@ -21,7 +21,7 @@ fn init_rapier(app: &mut App) {
     // TODO: we need to disable physics when not running
 
     app.editor_bundle(
-        "Rapier",
+        "Physicals",
         "Static Box",
         (
             MeshPrimitive3dPrefab::Box(BoxPrefab::default()),
@@ -34,13 +34,48 @@ fn init_rapier(app: &mut App) {
     );
 
     app.editor_bundle(
-        "Rapier",
+        "Physicals",
         "Dynamic Sphere",
         (
             MeshPrimitive3dPrefab::Sphere(SpherePrefab::default()),
             Name::new("Dynamic Sphere".to_string()),
             RigidBody::Dynamic,
             Collider::ball(1.0),
+            Transform::default(),
+            Visibility::default(),
+        ),
+    );
+}
+
+#[cfg(feature = "editor")]
+#[cfg(not(feature = "rapier"))]
+fn init_xpdb(app: &mut App) {
+    use space_editor::prelude::bevy_xpbd_3d::prelude::*;
+    use space_editor::prelude::*;
+
+    // TODO: we need to disable physics when not running
+
+    app.editor_bundle(
+        "Physicals",
+        "Static Box",
+        (
+            MeshPrimitive3dPrefab::Box(BoxPrefab::default()),
+            Name::new("Static Box".to_string()),
+            RigidBody::Static,
+            Collider::cuboid(1.0, 1.0, 1.0),
+            Transform::default(),
+            Visibility::default(),
+        ),
+    );
+
+    app.editor_bundle(
+        "Physicals",
+        "Dynamic Sphere",
+        (
+            MeshPrimitive3dPrefab::Sphere(SpherePrefab::default()),
+            Name::new("Dynamic Sphere".to_string()),
+            RigidBody::Dynamic,
+            Collider::sphere(1.0),
             Transform::default(),
             Visibility::default(),
         ),
@@ -56,6 +91,9 @@ fn init_editor(app: &mut App) {
 
     #[cfg(feature = "rapier")]
     init_rapier(app);
+
+    #[cfg(not(feature = "rapier"))]
+    init_xpdb(app);
 }
 
 pub fn init(app: &mut App) {
