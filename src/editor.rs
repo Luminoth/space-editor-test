@@ -50,7 +50,6 @@ fn init_rapier(app: &mut App) {
 #[cfg(feature = "editor")]
 #[cfg(not(feature = "rapier"))]
 fn init_xpdb(app: &mut App) {
-    use space_editor::prelude::bevy_xpbd_3d::prelude::*;
     use space_editor::prelude::*;
 
     // TODO: we need to disable physics when not running
@@ -61,8 +60,8 @@ fn init_xpdb(app: &mut App) {
         (
             MeshPrimitive3dPrefab::Box(BoxPrefab::default()),
             Name::new("Static Box".to_string()),
-            RigidBody::Static,
-            Collider::cuboid(1.0, 1.0, 1.0),
+            RigidBodyPrefab::Static,
+            ColliderPrefab::FromPrefabMesh,
             Transform::default(),
             Visibility::default(),
         ),
@@ -74,8 +73,8 @@ fn init_xpdb(app: &mut App) {
         (
             MeshPrimitive3dPrefab::Sphere(SpherePrefab::default()),
             Name::new("Dynamic Sphere".to_string()),
-            RigidBody::Dynamic,
-            Collider::sphere(1.0),
+            RigidBodyPrefab::Dynamic,
+            ColliderPrefab::FromPrefabMesh,
             Transform::default(),
             Visibility::default(),
         ),

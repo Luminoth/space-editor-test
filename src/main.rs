@@ -11,9 +11,7 @@ fn init_game(app: &mut App) {
 
     #[cfg(not(feature = "rapier"))]
     {
-        use space_editor::prelude::bevy_xpbd_3d::prelude::*;
-
-        app.add_plugins(PhysicsPlugins::default());
+        app.add_plugins(space_editor::space_bevy_xpbd_plugin::XpbdPlugin);
     }
 }
 

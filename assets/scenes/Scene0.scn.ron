@@ -158,6 +158,8 @@
           h: 1.0,
           d: 1.0,
         )),
+        "space_bevy_xpbd_plugin::collider::ColliderPrefab": FromPrefabMesh,
+        "space_bevy_xpbd_plugin::registry::RigidBodyPrefab": Static,
         "bevy_xpbd_3d::components::mass_properties::Mass": (3999.9998),
         "bevy_xpbd_3d::components::Friction": (
           dynamic_coefficient: 0.3,
@@ -197,7 +199,7 @@
         "bevy_transform::components::transform::Transform": (
           translation: (
             x: 0.0,
-            y: 2.0,
+            y: 5.0,
             z: 0.0,
           ),
           rotation: (
@@ -252,6 +254,8 @@
         "space_prefab::component::shape::MeshPrimitive3dPrefab": Sphere((
           r: 1.0,
         )),
+        "space_bevy_xpbd_plugin::collider::ColliderPrefab": FromPrefabMesh,
+        "space_bevy_xpbd_plugin::registry::RigidBodyPrefab": Dynamic,
         "bevy_xpbd_3d::components::mass_properties::Mass": (4.1887903),
         "bevy_xpbd_3d::components::Friction": (
           dynamic_coefficient: 0.3,
